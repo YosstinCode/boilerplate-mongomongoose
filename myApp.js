@@ -24,11 +24,11 @@ const createAndSavePerson = (done) => {
     favoriteFoods: ["pizza", "hamburgers"],
   });
 
-  person.save((err, data) => {
+  return person.save((err, data) => {
     /*pass */
   });
 
-  done(null /*, data*/);
+  // done(null /*, data*/);
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
