@@ -26,6 +26,8 @@ const createAndSavePerson = (done) => {
 
   return person.save((err, data) => {
     /*pass */
+    if (err) return console.error(err);
+    done(null, data);
   });
 
   // done(null /*, data*/);
