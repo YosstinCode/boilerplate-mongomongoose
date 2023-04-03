@@ -8,7 +8,7 @@ mongoose.connect(process.env.MONGO_URI, {
 });
 
 let personaSchema = new mongoose.Schema({
-  _id: { type: Number, required: true },
+  // _id: { type: Number, required: true },
   name: { type: String, required: true },
   age: Number,
   favoriteFoods: [String],
@@ -18,7 +18,7 @@ let Person = mongoose.model("Person", personaSchema);
 
 const createAndSavePerson = (done) => {
   let person = new Person({
-    _id: 1,
+    // _id: 1,
     name: "John",
     age: 25,
     favoriteFoods: ["pizza", "hamburgers"],
