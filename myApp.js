@@ -68,28 +68,14 @@ const findPersonById = (personId, done) => {
 const findEditThenSave = (personId, done) => {
   const foodToAdd = "hamburger";
 
-  let person = Person.findById({ _id: personId }, (err, data) => {
+  let personFound = Person.findOne({ _id: personId }, (err, data) => {
     if (err) return console.error(err);
-    done(null, data);
+    data.favoriteFoods.push(foodToAdd);
+    data.save((err, data) => {
+      if (err) return console.error(err);
+      done(null, data);
+    });
   });
-
-  person.favoriteFoods.push(foodToAdd);
-
-  person.save((err, data) => {
-    if (err) return console.error(err);
-    done(null, data);
-
-    // console.log(data);
-  });
-
-  // Person.updateOne(
-  //   { _id: personId },
-  //   { $push: { favoriteFoods: foodToAdd } },
-  //   (err, data) => {
-  //     if (err) return console.error(err);
-  //     done(null, data);
-  //   }
-  // );
 };
 
 const findAndUpdate = (personName, done) => {
